@@ -1,3 +1,7 @@
+function sample(array) {
+  const index = Math.floor(Math.random() * array.length)
+  return array[index]
+}
 function generatePassword() {
   // define things user might want
   const lowerCaseLetters = 'abcdefghijklmnopqrstuvwxyz'
@@ -6,7 +10,7 @@ function generatePassword() {
   const symbols = '`~!@$%^&*()-_+={}[]|;:"<>,.?/'
   // define dummy data
   const options = {
-    length: 12,
+    length: 6,
     lowercase: 'on',
     uppercase: 'on',
     numbers: 'on',
@@ -37,9 +41,13 @@ function generatePassword() {
   }
   console.log('collection', collection)
   // start generating password
-
+  let password = ''
+  for (let i = 0; i < Number(options.length); i++) {
+    password += sample(collection)
+  }
   // return the generated password
-  console.log('This function will generate password')
+  console.log('password', password)
+  return password
 }
 
 generatePassword()
