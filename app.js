@@ -1,5 +1,6 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
+const generatePassword = require('./generate_password')
 const app = express()
 const PORT = 3000
 //Set view engine
@@ -14,8 +15,9 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', (req, res) => {
-  console.log(req.body);
-  res.render('index')
+  const password = generatePassword(req.body)
+  console.log('Random password is: ', password)
+  res.render('index', {password})
 })
 
 
