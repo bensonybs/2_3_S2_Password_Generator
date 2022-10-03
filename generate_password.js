@@ -10,7 +10,7 @@ function generatePassword() {
     lowercase: 'on',
     uppercase: 'on',
     numbers: 'on',
-    excludeCharacters: '40'
+    excludeCharacters: 'AaBb'
   }
   console.log('options', options)
   // create a collection to store things user picked up
@@ -30,10 +30,12 @@ function generatePassword() {
   if (options.symbols === 'on') {
     collection = collection.concat(symbols.split(''))
   }
-
-  console.log('collection', collection)
   // remove things user do not need
-
+  if (options.excludeCharacters) {
+    console.log(`exclude characters: ${options.excludeCharacters}`)
+    collection = collection.filter(character => !(options.excludeCharacters.includes(character)))
+  }
+  console.log('collection', collection)
   // start generating password
 
   // return the generated password
