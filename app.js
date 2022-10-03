@@ -5,13 +5,18 @@ const PORT = 3000
 //Set view engine
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
+//Body Parser
+app.use(express.urlencoded({ extended: true }))
 
+//Routes
 app.get('/', (req, res) => {
   res.render('index')
 })
 
-
-
+app.post('/', (req, res) => {
+  console.log(req.body);
+  res.render('index')
+})
 
 
 
