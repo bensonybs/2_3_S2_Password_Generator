@@ -15,9 +15,10 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', (req, res) => {
-  const password = generatePassword(req.body)
+  const options = req.body
+  const password = generatePassword(options)
   console.log('Random password is: ', password)
-  res.render('index', {password})
+  res.render('index', {password, options})
 })
 
 

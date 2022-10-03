@@ -29,7 +29,6 @@ function generatePassword(options) {
   if (options.excludeCharacters) {
     collection = collection.filter(character => !(options.excludeCharacters.includes(character)))
   }
-  console.log('Generate password from the collection:', collection)
   // start generating password
   let password = ''
   for (let i = 0; i < Number(options.length); i++) {
